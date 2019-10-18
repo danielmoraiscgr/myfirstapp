@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+       Ionic Storage Exemple
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-lis>
+      <ion-card *ngFor="let item of contacts" [ngClass]="{'item-inactive': !item.contact.active }">
+        <ion-card-header>
+           <h1> {{ item.contact.name }}</h1>
+        </ion-card-header>
+        <ion-card-content>
+           <p> {{ item.contact.phone }} -  {{ item.contact.birth | date: 'dd/MM/yyyy' }} </p>
+        </ion-card-content>
+        <ion-row text-center>
+            <iocon-col>
+              <button ion-button icon-left clear small (click)="editContact(item)">
+                 <ion-icon name="create"></ion-icon>
+                 <div>
+                   Editar            
+                 </div>
+              </button>
+            </iocon-col>
+            <button ion-button icon-left clear small (click)="removeContact(item)">
+                <ion-icon name="trash"></ion-icon>
+                <div>
+                  Excluir           
+                </div>
+             </button>
+            <iocon-col>
+                <a href="tel:{{ item.contact.phone }}" ion-button icon-left clear small>
+                    <ion-icon name="call"></ion-icon>
+                    <div>
+                      Ligar           
+                    </div>
+                 </button>
+              </iocon-col>
+              <iocon-col>
+
+                </iocon-col>
+                  
+        </ion-row>
+        </ion-card>
+  </ion-lis>
+  <ion-fab right bottom>
+      <button ion-button color="primary"  (click)="addContact()">
+          <ion-icon name="add"></ion-icon>
+       </button>
+  </ion-fab>
+</ion-content>
